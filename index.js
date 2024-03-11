@@ -16,7 +16,7 @@ app.use(publishRoute);
 app.use(offersRoute);
 
 app.all("*", (req, res) => {
-  res.status(404).json({ message: "This route doesn't existaaaaa" });
+  res.status(404).json({ message: "This route doesn't exist" });
 });
 
 app.listen(process.env.PORT, () => {
