@@ -6,7 +6,7 @@ const Offer = require("../Models/Offer");
 
 router.get("/offers", async (req, res) => {
   try {
-    const itemsPerPage = 2;
+    const itemsPerPage = 10;
     const sortType = {
       "price-asc": { product_price: "asc" },
       "price-desc": { product_price: "desc" },
@@ -35,11 +35,10 @@ router.get("/offers", async (req, res) => {
       product_name: regExp,
       product_price: { $gte: priceMin, $lte: priceMax },
     })
-      //.populate("owner", "account")
+      .populate("owner", "account")
       .limit(itemsPerPage)
       .skip((page - 1) * itemsPerPage)
-      .sort(sortType[sort])
-      .select("product_name product_price owner");
+      .sort(sortType[sort]);
 
     res.status(200).json(offers);
   } catch (error) {
