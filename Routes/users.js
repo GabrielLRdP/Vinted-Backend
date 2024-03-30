@@ -55,6 +55,9 @@ router.post("/user/login", async (req, res) => {
     const reqEmail = req.body.email;
     const reqPassword = req.body.password;
     const userData = await User.findOne({ email: reqEmail });
+    if (!userData) {
+      res.status(400).json({ message: "Wrong email or password" });
+    }
     const userSalt = userData.salt;
     const hashedrequestPassword = SHA256(reqPassword + userSalt).toString(
       encBase64
@@ -69,7 +72,7 @@ router.post("/user/login", async (req, res) => {
         },
       });
     } else {
-      res.status(400).json({ message: "Wrong password" });
+      res.status(400).json({ message: "Wrong email or password" });
     }
   } catch (error) {
     res.status(500).json(error.message);
