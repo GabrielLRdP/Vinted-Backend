@@ -13,10 +13,8 @@ router.post("/user/signup", async (req, res) => {
     const email = req.body.email;
     const isAlreadyinDb = await User.countDocuments({ email: email });
     let pictureToUpload;
-    if (req.files.picture) {
-      pictureToUpload = req.files.picture;
-    } else {
-    }
+
+    pictureToUpload = req.files.picture;
 
     if (isAlreadyinDb) {
       res.status(400).json({ message: "User already in database" });
@@ -38,7 +36,6 @@ router.post("/user/signup", async (req, res) => {
       email: email,
       account: {
         username: username,
-        avatar: pictureToUpload,
       },
       newsletter: newsletter,
       token: token,
@@ -46,11 +43,13 @@ router.post("/user/signup", async (req, res) => {
       salt: salt,
     });
 
-    await userSignedup.save();
     const file = await cloudinary.uploader.upload(
       convertToBase64(pictureToUpload),
       { folder: `/vinted/users/${userSignedup._id}` }
     );
+
+    userSignedup.account.avatar = file;
+    await userSignedup.save();
 
     res
       .status(200)
