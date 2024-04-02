@@ -6,8 +6,9 @@ const encBase64 = require("crypto-js/enc-base64.js");
 const SHA256 = require("crypto-js/sha256");
 const cloudinary = require("cloudinary").v2;
 const User = require("../Models/User.js");
+const fileupload = require("express-fileupload");
 
-router.post("/user/signup", async (req, res) => {
+router.post("/user/signup", fileupload(), async (req, res) => {
   try {
     const username = req.body.username;
     const email = req.body.email;
