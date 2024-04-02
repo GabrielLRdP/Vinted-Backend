@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const uid2 = require("uid2");
 const encBase64 = require("crypto-js/enc-base64.js");
 const SHA256 = require("crypto-js/sha256");
-
+const cloudinary = require("cloudinary").v2;
 const User = require("../Models/User.js");
 
 router.post("/user/signup", async (req, res) => {
@@ -38,6 +38,7 @@ router.post("/user/signup", async (req, res) => {
       email: email,
       account: {
         username: username,
+        avatar: pictureToUpload,
       },
       newsletter: newsletter,
       token: token,
@@ -46,6 +47,10 @@ router.post("/user/signup", async (req, res) => {
     });
 
     await userSignedup.save();
+    const file = await cloudinary.uploader.upload(
+      convertToBase64(pictureToUpload),
+      { folder: `/vinted/users/${userSignedup._id}` }
+    );
 
     res
       .status(200)
