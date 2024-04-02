@@ -12,6 +12,11 @@ router.post("/user/signup", async (req, res) => {
     const username = req.body.username;
     const email = req.body.email;
     const isAlreadyinDb = await User.countDocuments({ email: email });
+    let pictureToUpload;
+    if (req.files.picture) {
+      pictureToUpload = req.files.picture;
+    } else {
+    }
 
     if (isAlreadyinDb) {
       res.status(400).json({ message: "User already in database" });

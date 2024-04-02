@@ -29,6 +29,7 @@ router.post(
         req.body;
       const user = req.user;
       const pictureToUpload = req.files.picture;
+      console.log(pictureToUpload);
 
       const offer = new Offer({
         product_name: title,
