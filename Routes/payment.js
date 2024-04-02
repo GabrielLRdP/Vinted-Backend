@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 // Pensez à cacher votre clef privée dans votre .env
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("@stripe/stripe-js")(process.env.STRIPE_SECRET_KEY);
 
 app.use(cors());
 app.use(express.json());
