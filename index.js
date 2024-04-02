@@ -8,7 +8,7 @@ const cors = require("cors");
 app.use(cors());
 
 const userRoute = require("./Routes/users.js");
-const publishRoute = require("./Routes/offer/publish.js");
+const publishRoute = require("./Routes/publish.js");
 const offersRoute = require("./Routes/offers.js");
 const paymentRoute = require("./Routes/payment.js");
 
