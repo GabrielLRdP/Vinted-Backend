@@ -4,9 +4,6 @@ const cors = require("cors");
 // Pensez à cacher votre clef privée dans votre .env
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-app.use(cors());
-app.use(express.json());
-
 router.post("/payment", async (req, res) => {
   try {
     // On crée une intention de paiement
