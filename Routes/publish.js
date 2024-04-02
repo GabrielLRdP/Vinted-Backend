@@ -15,9 +15,9 @@ const convertToBase64 = (file) => {
   return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
 };
 
-const isAuthenticated = require("../../Functions/IsAuthenticated.js");
+const isAuthenticated = require("../Functions/IsAuthenticated.js");
 
-const Offer = require("../../Models/Offer.js");
+const Offer = require("../Models/Offer.js");
 
 router.post(
   "/offer/publish",

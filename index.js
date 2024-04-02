@@ -10,10 +10,12 @@ app.use(cors());
 const userRoute = require("./Routes/users.js");
 const publishRoute = require("./Routes/offer/publish.js");
 const offersRoute = require("./Routes/offers.js");
+const paymentRoute = require("./Routes/payment.js");
 
 app.use(userRoute);
 app.use(publishRoute);
 app.use(offersRoute);
+app.use(paymentRoute);
 
 app.all("*", (req, res) => {
   res.status(404).json({ message: "This route doesn't exist" });

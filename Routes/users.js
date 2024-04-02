@@ -65,6 +65,8 @@ router.post("/user/login", async (req, res) => {
 
     if (hashedrequestPassword === userData.hash) {
       res.status(200).json({
+        message: "login successfull",
+        connected: true,
         _id: userData._id,
         token: userData.token,
         account: {
