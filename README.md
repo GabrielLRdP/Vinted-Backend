@@ -2,7 +2,7 @@
 
 ## Description
 
-Ce projet constitue le backend du clone de Vinted, une plateforme de vente et d'achat de vêtements d'occasion. Il fournit les fonctionnalités nécessaires pour gérer les utilisateurs, les annonces, les paiements et d'autres aspects de l'application. Vous pouvez retrouver le repository du frontend en [cliquant ici](https://github.com/GabrielLRdP/Vinted-frontend/edit/main/README.md)
+Ce projet constitue le backend du clone de Vinted, une plateforme de vente et d'achat de vêtements d'occasion. Il fournit les fonctionnalités nécessaires pour gérer les utilisateurs, les annonces, les paiements et d'autres aspects de l'application. Vous pouvez retrouver le repository du frontend en [cliquant ici](https://github.com/GabrielLRdP/Vinted-frontend)
 
 
 ## Technologies Utilisées
